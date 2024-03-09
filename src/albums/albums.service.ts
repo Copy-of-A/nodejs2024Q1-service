@@ -9,14 +9,14 @@ export class AlbumsService {
 
   createAlbum(name: string, year: number, artistId: ArtistIdType): Album {
     const id = uuidv4();
-    const artist: Album = {
+    const album: Album = {
       id,
       name,
       year,
       artistId,
     };
-    this.albums.push(artist);
-    return artist;
+    this.albums.push(album);
+    return album;
   }
 
   getAllAlbums(): Album[] {
@@ -24,7 +24,7 @@ export class AlbumsService {
   }
 
   getAlbumById(id: string): Album {
-    return this.albums.find((artist) => artist.id === id);
+    return this.albums.find((album) => album.id === id);
   }
 
   updateAlbum(
@@ -33,16 +33,16 @@ export class AlbumsService {
     year: number,
     artistId: ArtistIdType,
   ): Album {
-    const artist = this.getAlbumById(id);
-    if (artist) {
-      artist.name = name;
-      artist.year = year;
-      artist.artistId = artistId;
+    const album = this.getAlbumById(id);
+    if (album) {
+      album.name = name;
+      album.year = year;
+      album.artistId = artistId;
     }
-    return artist;
+    return album;
   }
 
   deleteAlbum(id: string): void {
-    this.albums = this.albums.filter((artist) => artist.id !== id);
+    this.albums = this.albums.filter((album) => album.id !== id);
   }
 }
