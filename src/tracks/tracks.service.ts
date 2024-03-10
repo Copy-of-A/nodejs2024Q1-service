@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Track } from './track.interface';
+import { Track, TrackIdType } from './track.interface';
 import { v4 as uuidv4 } from 'uuid';
 import { ArtistIdType } from 'src/artists/artist.interface';
 import { AlbumIdType } from 'src/albums/album.interface';
@@ -30,12 +30,12 @@ export class TracksService {
     return this.tracks;
   }
 
-  getTrackById(id: string): Track {
+  getTrackById(id: TrackIdType): Track {
     return this.tracks.find((track) => track.id === id);
   }
 
   updateTrack(
-    id: string,
+    id: TrackIdType,
     name: string,
     duration: number,
     artistId: ArtistIdType,
@@ -51,7 +51,7 @@ export class TracksService {
     return track;
   }
 
-  deleteTrack(id: string): void {
+  deleteTrack(id: TrackIdType): void {
     this.tracks = this.tracks.filter((track) => track.id !== id);
   }
 }

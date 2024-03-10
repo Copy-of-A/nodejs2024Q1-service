@@ -9,8 +9,10 @@ import {
 import { AlbumIdType } from 'src/albums/album.interface';
 import { ArtistIdType } from 'src/artists/artist.interface';
 
+export type TrackIdType = string;
+
 export interface Track extends TrackDto {
-  id: string; // uuid v4
+  id: TrackIdType; // uuid v4
 }
 
 export class TrackDto {
