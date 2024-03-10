@@ -13,8 +13,7 @@ import {
 } from '@nestjs/common';
 import { Track, TrackDto } from './track.interface';
 import { TracksService } from './tracks.service';
-
-const TRACK_NOT_EXIST = 'Artist does not exist!';
+import { TRACK_NOT_EXIST } from './track.constants';
 
 @Controller('track')
 export class TracksController {

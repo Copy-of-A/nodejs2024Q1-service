@@ -11,10 +11,9 @@ import {
   ParseUUIDPipe,
   NotFoundException,
 } from '@nestjs/common';
-import { Artist, ArtistDto } from './artist.interface';
+import { Artist, ArtistDto, ArtistIdType } from './artist.interface';
 import { ArtistsService } from './artists.service';
-
-const ARTIST_NOT_EXIST = 'Artist does not exist!';
+import { ARTIST_NOT_EXIST } from './artist.constants';
 
 @Controller('artist')
 export class ArtistsController {
@@ -36,7 +35,7 @@ export class ArtistsController {
       'id',
       new ParseUUIDPipe({ errorHttpStatusCode: HttpStatus.BAD_REQUEST }),
     )
-    id: string,
+    id: ArtistIdType,
   ): Artist {
     const artist = this.artistsService.getArtistById(id);
     if (!artist) {
@@ -51,7 +50,7 @@ export class ArtistsController {
       'id',
       new ParseUUIDPipe({ errorHttpStatusCode: HttpStatus.BAD_REQUEST }),
     )
-    id: string,
+    id: ArtistIdType,
     @Body() artistDto: ArtistDto,
   ): Artist {
     const artist = this.artistsService.getArtistById(id);
@@ -72,7 +71,7 @@ export class ArtistsController {
       'id',
       new ParseUUIDPipe({ errorHttpStatusCode: HttpStatus.BAD_REQUEST }),
     )
-    id: string,
+    id: ArtistIdType,
   ): void {
     const artist = this.artistsService.getArtistById(id);
     if (!artist) {

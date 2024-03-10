@@ -13,8 +13,7 @@ import {
 } from '@nestjs/common';
 import { Album, AlbumDto } from './album.interface';
 import { AlbumsService } from './albums.service';
-
-const ALBUM_NOT_EXIST = 'Album does not exist!';
+import { ALBUM_NOT_EXIST } from './album.constants';
 
 @Controller('album')
 export class AlbumsController {
