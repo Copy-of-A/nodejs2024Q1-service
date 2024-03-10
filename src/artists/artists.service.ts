@@ -26,7 +26,11 @@ export class ArtistsService {
     return artist;
   }
 
-  getAllArtists(): Artist[] {
+  getAllArtists(
+    predicate: (artist: Partial<Artist>) => boolean = (
+      artist: Partial<Artist>,
+    ) => true,
+  ): Artist[] {
     return this.artists;
   }
 
