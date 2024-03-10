@@ -63,13 +63,7 @@ export class TracksController {
     if (!track) {
       throw new NotFoundException(TRACK_NOT_EXIST);
     }
-    return this.tracksService.updateTrack(
-      id,
-      trackDto.name,
-      trackDto.duration,
-      trackDto.artistId,
-      trackDto.albumId,
-    );
+    return this.tracksService.updateTrack(id, { ...trackDto });
   }
 
   @Delete(':id')

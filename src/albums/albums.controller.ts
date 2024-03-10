@@ -62,12 +62,7 @@ export class AlbumsController {
     if (!album) {
       throw new NotFoundException(ALBUM_NOT_EXIST);
     }
-    return this.albumsService.updateAlbum(
-      id,
-      albumDto.name,
-      albumDto.year,
-      albumDto.artistId,
-    );
+    return this.albumsService.updateAlbum(id, { ...albumDto });
   }
 
   @Delete(':id')

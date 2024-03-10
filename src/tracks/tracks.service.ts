@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Track, TrackIdType } from './track.interface';
+import { Track, TrackDto, TrackIdType } from './track.interface';
 import { v4 as uuidv4 } from 'uuid';
 import { ArtistIdType } from 'src/artists/artist.interface';
 import { AlbumIdType } from 'src/albums/album.interface';
@@ -26,8 +26,11 @@ export class TracksService {
     return track;
   }
 
-  getAllTracks(): Track[] {
-    return this.tracks;
+  getAllTracks(
+    predicate: (track: Partial<Track>) => boolean = (track: Partial<Track>) =>
+      true,
+  ): Track[] {
+    return this.tracks.filter(predicate);
   }
 
   getTrackById(id: TrackIdType): Track {
@@ -36,10 +39,7 @@ export class TracksService {
 
   updateTrack(
     id: TrackIdType,
-    name: string,
-    duration: number,
-    artistId: ArtistIdType,
-    albumId: AlbumIdType,
+    { name, duration, artistId, albumId }: TrackDto,
   ): Track {
     const track = this.getTrackById(id);
     if (track) {
