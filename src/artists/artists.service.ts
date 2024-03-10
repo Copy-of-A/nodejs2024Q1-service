@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Artist } from './artist.interface';
+import { Artist, ArtistIdType } from './artist.interface';
 import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
@@ -21,11 +21,11 @@ export class ArtistsService {
     return this.artists;
   }
 
-  getArtistById(id: string): Artist {
+  getArtistById(id: ArtistIdType): Artist {
     return this.artists.find((artist) => artist.id === id);
   }
 
-  updateArtist(id: string, name: string, grammy: boolean): Artist {
+  updateArtist(id: ArtistIdType, name: string, grammy: boolean): Artist {
     const artist = this.getArtistById(id);
     if (artist) {
       artist.name = name;
@@ -34,7 +34,7 @@ export class ArtistsService {
     return artist;
   }
 
-  deleteArtist(id: string): void {
+  deleteArtist(id: ArtistIdType): void {
     this.artists = this.artists.filter((artist) => artist.id !== id);
   }
 }

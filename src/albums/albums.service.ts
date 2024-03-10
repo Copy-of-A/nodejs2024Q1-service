@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Album } from './album.interface';
+import { Album, AlbumIdType } from './album.interface';
 import { v4 as uuidv4 } from 'uuid';
 import { ArtistIdType } from 'src/artists/artist.interface';
 
@@ -23,12 +23,12 @@ export class AlbumsService {
     return this.albums;
   }
 
-  getAlbumById(id: string): Album {
+  getAlbumById(id: AlbumIdType): Album {
     return this.albums.find((album) => album.id === id);
   }
 
   updateAlbum(
-    id: string,
+    id: AlbumIdType,
     name: string,
     year: number,
     artistId: ArtistIdType,
@@ -42,7 +42,7 @@ export class AlbumsService {
     return album;
   }
 
-  deleteAlbum(id: string): void {
+  deleteAlbum(id: AlbumIdType): void {
     this.albums = this.albums.filter((album) => album.id !== id);
   }
 }
