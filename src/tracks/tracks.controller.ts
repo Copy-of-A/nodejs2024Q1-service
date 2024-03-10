@@ -14,6 +14,8 @@ import {
 import { Track, TrackDto } from './track.interface';
 import { TracksService } from './tracks.service';
 
+const TRACK_NOT_EXIST = 'Artist does not exist!';
+
 @Controller('track')
 export class TracksController {
   constructor(private tracksService: TracksService) {}
@@ -43,7 +45,7 @@ export class TracksController {
   ): Track {
     const track = this.tracksService.getTrackById(id);
     if (!track) {
-      throw new NotFoundException('Track does not exist!');
+      throw new NotFoundException(TRACK_NOT_EXIST);
     }
     return track;
   }
@@ -59,7 +61,7 @@ export class TracksController {
   ): Track {
     const track = this.tracksService.getTrackById(id);
     if (!track) {
-      throw new NotFoundException('Track does not exist!');
+      throw new NotFoundException(TRACK_NOT_EXIST);
     }
     return this.tracksService.updateTrack(
       id,
@@ -81,7 +83,7 @@ export class TracksController {
   ): void {
     const track = this.tracksService.getTrackById(id);
     if (!track) {
-      throw new NotFoundException('Track does not exist!');
+      throw new NotFoundException(TRACK_NOT_EXIST);
     }
     this.tracksService.deleteTrack(id);
   }

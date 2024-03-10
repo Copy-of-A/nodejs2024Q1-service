@@ -14,6 +14,8 @@ import {
 import { Artist, ArtistDto } from './artist.interface';
 import { ArtistsService } from './artists.service';
 
+const ARTIST_NOT_EXIST = 'Artist does not exist!';
+
 @Controller('artist')
 export class ArtistsController {
   constructor(private artistsService: ArtistsService) {}
@@ -38,7 +40,7 @@ export class ArtistsController {
   ): Artist {
     const artist = this.artistsService.getArtistById(id);
     if (!artist) {
-      throw new NotFoundException('Artist does not exist!');
+      throw new NotFoundException(ARTIST_NOT_EXIST);
     }
     return artist;
   }
@@ -54,7 +56,7 @@ export class ArtistsController {
   ): Artist {
     const artist = this.artistsService.getArtistById(id);
     if (!artist) {
-      throw new NotFoundException('Artist does not exist!');
+      throw new NotFoundException(ARTIST_NOT_EXIST);
     }
     return this.artistsService.updateArtist(
       id,
@@ -74,7 +76,7 @@ export class ArtistsController {
   ): void {
     const artist = this.artistsService.getArtistById(id);
     if (!artist) {
-      throw new NotFoundException('Artist does not exist!');
+      throw new NotFoundException(ARTIST_NOT_EXIST);
     }
     this.artistsService.deleteArtist(id);
   }

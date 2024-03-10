@@ -14,6 +14,8 @@ import {
 import { Album, AlbumDto } from './album.interface';
 import { AlbumsService } from './albums.service';
 
+const ALBUM_NOT_EXIST = 'Album does not exist!';
+
 @Controller('album')
 export class AlbumsController {
   constructor(private albumsService: AlbumsService) {}
@@ -42,7 +44,7 @@ export class AlbumsController {
   ): Album {
     const album = this.albumsService.getAlbumById(id);
     if (!album) {
-      throw new NotFoundException('Album does not exist!');
+      throw new NotFoundException(ALBUM_NOT_EXIST);
     }
     return album;
   }
@@ -58,7 +60,7 @@ export class AlbumsController {
   ): Album {
     const album = this.albumsService.getAlbumById(id);
     if (!album) {
-      throw new NotFoundException('Album does not exist!');
+      throw new NotFoundException(ALBUM_NOT_EXIST);
     }
     return this.albumsService.updateAlbum(
       id,
@@ -79,7 +81,7 @@ export class AlbumsController {
   ): void {
     const album = this.albumsService.getAlbumById(id);
     if (!album) {
-      throw new NotFoundException('Album does not exist!');
+      throw new NotFoundException(ALBUM_NOT_EXIST);
     }
     this.albumsService.deleteAlbum(id);
   }
