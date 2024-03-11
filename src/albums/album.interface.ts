@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import {
   IsDefined,
   IsInt,
@@ -14,14 +15,23 @@ export interface Album extends AlbumDto {
   id: AlbumIdType; // uuid v4
 }
 export class AlbumDto {
+  @ApiProperty({
+    required: true,
+  })
   @IsNotEmpty()
   @IsString()
   name: string;
 
+  @ApiProperty({
+    required: true,
+  })
   @IsDefined()
   @IsInt()
   year: number;
 
+  @ApiProperty({
+    required: true,
+  })
   @IsUUID()
   @ValidateIf((e) => e === null)
   artistId: ArtistIdType | null; // refers to Artist

@@ -14,7 +14,9 @@ import {
 import { Artist, ArtistDto, ArtistIdType } from './artist.interface';
 import { ArtistsService } from './artists.service';
 import { ARTIST_NOT_EXIST } from './artist.constants';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Artist')
 @Controller('artist')
 export class ArtistsController {
   constructor(private artistsService: ArtistsService) {}

@@ -14,7 +14,9 @@ import {
 import { Track, TrackDto } from './track.interface';
 import { TracksService } from './tracks.service';
 import { TRACK_NOT_EXIST } from './track.constants';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Tracks')
 @Controller('track')
 export class TracksController {
   constructor(private tracksService: TracksService) {}

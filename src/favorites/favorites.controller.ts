@@ -16,7 +16,9 @@ import { ArtistIdType } from 'src/artists/artist.interface';
 import { ARTIST_NOT_EXIST } from 'src/artists/artist.constants';
 import { AlbumIdType } from 'src/albums/album.interface';
 import { TrackIdType } from 'src/tracks/track.interface';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Favorites')
 @Controller('favs')
 export class FavoritesController {
   constructor(private favoritesService: FavoritessService) {}

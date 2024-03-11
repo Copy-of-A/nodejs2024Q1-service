@@ -14,7 +14,9 @@ import {
 import { Album, AlbumDto } from './album.interface';
 import { AlbumsService } from './albums.service';
 import { ALBUM_NOT_EXIST } from './album.constants';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Albums')
 @Controller('album')
 export class AlbumsController {
   constructor(private albumsService: AlbumsService) {}

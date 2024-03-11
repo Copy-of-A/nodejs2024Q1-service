@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import {
   IsDefined,
   IsInt,
@@ -16,18 +17,30 @@ export interface Track extends TrackDto {
 }
 
 export class TrackDto {
+  @ApiProperty({
+    required: true,
+  })
   @IsNotEmpty()
   @IsString()
   name: string;
 
+  @ApiProperty({
+    required: true,
+  })
   @IsDefined()
   @IsInt()
   duration: number; // integer number
 
+  @ApiProperty({
+    required: true,
+  })
   @IsUUID()
   @ValidateIf((e) => e === null)
   artistId: ArtistIdType | null; // refers to Artist
 
+  @ApiProperty({
+    required: true,
+  })
   @IsUUID()
   @ValidateIf((e) => e === null)
   albumId: AlbumIdType | null; // refers to Album

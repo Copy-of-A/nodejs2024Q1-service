@@ -21,7 +21,9 @@ import {
 import { UsersService } from './users.service';
 
 const USER_NOT_EXIST = 'User does not exist!';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Users')
 @Controller('user')
 export class UsersController {
   constructor(private usersService: UsersService) {}
